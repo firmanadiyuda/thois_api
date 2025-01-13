@@ -42,4 +42,4 @@ end
 
 
 gem "sqids"
-gem "carrierwave", "~> 3.0.7"
+gem "carrierwave", "~> 3.1.1"
