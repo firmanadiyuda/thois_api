@@ -7,7 +7,7 @@ class MainController < ApplicationController
     decoded = sqids.decode(id)
     begin
       @session = Session.find(decoded[0])
-      render json: { session: @session, event: @session.event, export: @session.export.where(printable: !true).order(created_at: :desc) }, status: :ok
+      render json: { session: @session, event: @session.event, export: @session.export.where("printable IS NULL OR printable = ?", false).order(created_at: :desc) }, status: :ok
     rescue
       render json: { session: nil, event: nil, export: nil }, status: "404"
     end
